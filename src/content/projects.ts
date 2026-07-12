@@ -3,11 +3,9 @@ import { Project } from "@/types"
 export const projectsData: Project[] = [
   {
     title: "Lead Management System API",
-    slug: "lead-management-system-api",
-    description:
-      "A secure RESTful API for tracking sales leads. Implements JWT token-based authentication and role-based permissions.",
-    longDescription:
-      "Built with FastAPI and SQLAlchemy, this backend service exposes endpoints for managing sales pipelines. It includes password hashing with bcrypt, access tokens, and pagination to optimize server response times.",
+    slug: "lead-management-system",
+    description: "A secure RESTful API for tracking sales leads. Implements JWT token-based authentication and role-based permissions.",
+    longDescription: "Built with FastAPI and SQLAlchemy, this backend service exposes endpoints for managing sales pipelines. It includes password hashing with bcrypt, access tokens, and pagination to optimize server response times.",
     technologies: ["Python", "FastAPI", "SQLAlchemy", "MySQL", "JWT"],
     github: "https://github.com/hariprasadalagesan/lead-management-api",
     liveDemo: undefined,
@@ -20,11 +18,9 @@ export const projectsData: Project[] = [
   },
   {
     title: "Smart Home Automation (MQTT + ESP32)",
-    slug: "smart-home-automation",
-    description:
-      "An IoT controller connecting local sensors and relays to an MQTT broker, offering low-latency web triggers.",
-    longDescription:
-      "Developed using C++ on ESP32 microcontrollers. Communicates state anomalies over MQTT. Features a Python listener backend that logs telemetry data in a MySQL database for visual query processing.",
+    slug: "home-automation",
+    description: "An IoT controller connecting local sensors and relays to an MQTT broker, offering low-latency web triggers.",
+    longDescription: "Developed using C++ on ESP32 microcontrollers. Communicates state anomalies over MQTT. Features a Python listener backend that logs telemetry data in a MySQL database for visual query processing.",
     technologies: ["Python", "C++", "ESP32", "MQTT", "MySQL"],
     github: "https://github.com/hariprasadalagesan/smart-home-mqtt",
     liveDemo: undefined,
@@ -37,11 +33,9 @@ export const projectsData: Project[] = [
   },
   {
     title: "E-Commerce Backend API",
-    slug: "e-commerce-backend-api",
-    description:
-      "A backend service modeling inventory, cart orders, and transactions using relational database schemas.",
-    longDescription:
-      "Features database models constructed in FastAPI using SQLModel. Implements transactional safety checks for inventory depletion during user checkouts, logging operations via custom interceptors.",
+    slug: "ecommerce-backend",
+    description: "A backend service modeling inventory, cart orders, and transactions using relational database schemas.",
+    longDescription: "Features database models constructed in FastAPI using SQLModel. Implements transactional safety checks for inventory depletion during user checkouts, logging operations via custom interceptors.",
     technologies: ["Python", "FastAPI", "SQLAlchemy", "MySQL", "Docker"],
     github: "https://github.com/hariprasadalagesan/ecommerce-backend",
     liveDemo: undefined,
@@ -54,11 +48,9 @@ export const projectsData: Project[] = [
   },
   {
     title: "Spotify Data Analytics",
-    slug: "spotify-data-analytics",
-    description:
-      "A data processing pipeline fetching personal playlist streams via Spotify API, cleaning data using Pandas.",
-    longDescription:
-      "Fetches user tracks and listen histories. Applies data cleaning operations, filters top genres, and exports structured aggregates into local databases for analytical processing.",
+    slug: "spotify-analysis",
+    description: "A data processing pipeline fetching personal playlist streams via Spotify API, cleaning data using Pandas.",
+    longDescription: "Fetches user tracks and listen histories. Applies data cleaning operations, filters top genres, and exports structured aggregates into local databases for analytical processing.",
     technologies: ["Python", "Pandas", "Spotify API", "MySQL"],
     github: "https://github.com/hariprasadalagesan/spotify-analytics",
     liveDemo: undefined,
@@ -72,10 +64,8 @@ export const projectsData: Project[] = [
   {
     title: "Employee Management System",
     slug: "employee-management-system",
-    description:
-      "A database-driven application facilitating clean CRUD operations to manage corporate departments and roles.",
-    longDescription:
-      "Exposes API paths to create, update, and search employees by designation. Utilizes structured joins in SQLAlchemy to optimize database retrievals.",
+    description: "A database-driven application facilitating clean CRUD operations to manage corporate departments and roles.",
+    longDescription: "Exposes API paths to create, update, and search employees by designation. Utilizes structured joins in SQLAlchemy to optimize database retrievals.",
     technologies: ["Python", "FastAPI", "SQLAlchemy", "MySQL"],
     github: "https://github.com/hariprasadalagesan/employee-management",
     liveDemo: undefined,
@@ -89,16 +79,9 @@ export const projectsData: Project[] = [
   {
     title: "Personal Portfolio (HariWorks)",
     slug: "hariworks-portfolio",
-    description:
-      "A premium Next.js 16 personal brand site showcasing design system tokens, responsive grids, and standard relative colors.",
-    longDescription:
-      "Built with Next.js 16, TypeScript, and Tailwind CSS v4. Features a strictly typed content layer separating data and copy from presentation components, running on React Server Components.",
-    technologies: [
-      "Next.js 16",
-      "TypeScript",
-      "Tailwind CSS v4",
-      "Framer Motion",
-    ],
+    description: "A premium Next.js 16 personal brand site showcasing design system tokens, responsive grids, and standard relative colors.",
+    longDescription: "Built with Next.js 16, TypeScript, and Tailwind CSS v4. Features a strictly typed content layer separating data and copy from presentation components, running on React Server Components.",
+    technologies: ["Next.js 16", "TypeScript", "Tailwind CSS v4", "Framer Motion"],
     github: "https://github.com/hariprasadalagesan/myweb",
     liveDemo: "https://hariworks.com",
     images: ["/images/projects/portfolio-1.jpg"],
