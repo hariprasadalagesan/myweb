@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { Navbar } from "@/components/layout/navbar"
+import { Footer } from "@/components/layout/footer"
 import { constructMetadata } from "@/utils/metadata"
 import { siteMetadata } from "@/content/site"
 import "./globals.css"
@@ -40,6 +41,7 @@ export default function RootLayout({
         >
           <Navbar />
           <main className="flex flex-1 flex-col pt-20">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
