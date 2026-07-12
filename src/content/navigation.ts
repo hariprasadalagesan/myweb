@@ -6,6 +6,7 @@ export const navigationConfig: NavigationConfig = {
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
     { label: "Experience", href: "#experience" },
+    { label: "Building", href: "#currently-building" },
   ],
   footer: {
     column1: {
@@ -15,6 +16,7 @@ export const navigationConfig: NavigationConfig = {
         { label: "Projects", href: "#projects" },
         { label: "Skills", href: "#skills" },
         { label: "Experience", href: "#experience" },
+        { label: "Building", href: "#currently-building" },
       ],
     },
     column2: {

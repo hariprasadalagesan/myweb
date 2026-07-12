@@ -120,3 +120,10 @@ export interface NavigationConfig {
     }
   }
 }
+
+export interface CurrentlyBuildingItem {
+  title: string
+  description: string
+  status: string
+  iconName?: string
+}

@@ -1,8 +1,18 @@
 "use client"
 
-import { ArrowUpRight, Mail, MapPin, Download } from "lucide-react"
+import {
+  ArrowUpRight,
+  Mail,
+  MapPin,
+  Download,
+  Cpu,
+  Eye,
+  Terminal,
+  Layers,
+} from "lucide-react"
 import { Container, Section, SectionHeader } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Divider } from "@/components/ui/divider"
 import { Card, CardContent } from "@/components/ui/card"
@@ -17,6 +27,7 @@ import { aboutContent } from "@/content/about"
 import { skillsData } from "@/content/skills"
 import { projectsData } from "@/content/projects"
 import { experienceData } from "@/content/experience"
+import { currentlyBuildingData } from "@/content/currently-building"
 import { contactContent } from "@/content/contact"
 import { socialLinks } from "@/content/social"
 
@@ -122,10 +133,62 @@ export default function Home() {
           <div className="mx-auto max-w-4xl">
             <SectionHeader
               title="Career History"
-              subtitle="Timeline highlights of engineering roles, system migrations, and project leadership roles."
+              subtitle="Maestro Technology Services internship and structured backend developer engagements."
               badge="04 / Experience"
             />
             <Timeline items={experienceData} />
+          </div>
+        </Container>
+      </Section>
+
+      <Divider variant="gradient" />
+
+      {/* 5.5. CURRENTLY BUILDING SECTION */}
+      <Section id="currently-building" className="scroll-mt-20">
+        <Container>
+          <SectionHeader
+            title="Currently Building"
+            subtitle="An active focus of tools, configurations, and IoT devices I am currently prototyping."
+            badge="05 / Active Focus"
+            align="center"
+          />
+
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
+            {currentlyBuildingData.map((item) => {
+              const iconMap: Record<string, React.ReactNode> = {
+                Cpu: <Cpu className="text-brand-primary size-5" />,
+                Eye: <Eye className="text-brand-primary size-5" />,
+                Terminal: <Terminal className="text-brand-primary size-5" />,
+                Layers: <Layers className="text-brand-primary size-5" />,
+              }
+              return (
+                <Card key={item.title} interactive={false}>
+                  <CardContent className="space-y-4 p-6">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        {item.iconName && iconMap[item.iconName]}
+                        <Heading
+                          size="h4"
+                          as="h3"
+                          className="text-foreground font-semibold"
+                        >
+                          {item.title}
+                        </Heading>
+                      </div>
+                      <Badge
+                        variant="brand"
+                        className="px-2 py-0.5 font-mono text-[9px] uppercase"
+                      >
+                        {item.status}
+                      </Badge>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </Container>
       </Section>
@@ -172,7 +235,7 @@ export default function Home() {
               <SectionHeader
                 title={contactContent.title}
                 subtitle={contactContent.description}
-                badge="05 / Contact"
+                badge="06 / Contact"
               />
 
               <div className="space-y-4 font-mono text-sm">

@@ -11,6 +11,7 @@ export const heroContent: HeroContent = {
       label: "View Projects",
       href: "#projects",
       variant: "default",
+      icon: "ArrowRight",
     },
     {
       label: "Download Resume",

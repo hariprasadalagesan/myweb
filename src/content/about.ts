@@ -3,46 +3,52 @@ import { AboutContent } from "@/types"
 export const aboutContent: AboutContent = {
   title: "About Me",
   subtitle:
-    "Engineering software with strict discipline, modular structures, and absolute visual precision.",
+    "Applying Computer Science fundamentals to build clean, functional, and efficient backend systems.",
   paragraphs: [
-    "I am a Senior Software Engineer with a deep passion for designing robust system architectures that solve genuine user problems. Over the last several years, I have collaborated with tech teams to deploy high-scale cloud apps and modern user interfaces.",
-    "My development philosophy focuses on minimalism, readability, and performance. I believe software should not only execute correctly but be built as a self-documenting work of engineering art that other engineers can extend with ease.",
+    "I am a recent Computer Science graduate with a strong foundation in software engineering principles, algorithms, and database design. My focus is on backend development, where I write clean, maintainable code to solve practical problems.",
+    "Recently, I completed a Backend Developer Internship at Maestro Technology Services, where I worked with Python and FastAPI to build and optimize RESTful API services. I am highly motivated by automation and IoT projects, specifically combining microcontrollers like ESP32 with MQTT protocols.",
+    "I approach software development with a continuous learning mindset. I am eager to contribute my skills to entry-level Backend Developer and Software Engineer roles, where I can collaborate with teams to deploy production-quality systems.",
   ],
   metrics: [
     {
+      value: "1",
+      label: "Backend Internship",
+      description: "Maestro Technology Services",
+    },
+    {
       value: "6+",
-      label: "Years Experience",
-      description: "Building production systems",
+      label: "Real-World Projects",
+      description: "Including APIs, Web3, & IoT",
     },
     {
-      value: "20+",
-      label: "Projects Delivered",
-      description: "Across enterprise and open source",
+      value: "10+",
+      label: "Technologies Mastered",
+      description: "Python, FastAPI, Docker, & MySQL",
     },
     {
-      value: "99.9%",
-      label: "System Uptime",
-      description: "Maintained in live deployments",
+      value: "100%",
+      label: "Continuous Learning",
+      description: "Always building & reading code",
     },
   ],
   corePrinciples: [
     {
-      title: "Architecture First",
+      title: "Clean API Design",
       description:
-        "A well-structured design prevents tech debt and enables clean future features.",
+        "Developing well-documented, type-safe REST APIs with consistent error handling.",
       icon: "Layers",
     },
     {
-      title: "Performance & SEO",
+      title: "IoT & Automation",
       description:
-        "Speed is a feature. Fast loading, semantic HTML, and proper indexability are non-negotiable.",
+        "Connecting microcontrollers with MQTT brokers to enable localized, low-latency device control.",
       icon: "Zap",
     },
     {
-      title: "Accessibility Focused",
+      title: "Database Efficiency",
       description:
-        "Ensuring keyboard navigation, ARIA tags, and color contrast ratios work for all visitors.",
-      icon: "ShieldAlert",
+        "Designing optimized relational tables, indexing queries, and writing clean SQLAlchemy ORM code.",
+      icon: "Database",
     },
   ],
 }
