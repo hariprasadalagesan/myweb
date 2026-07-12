@@ -79,6 +79,18 @@
   --animate-glow: glow 4s infinite alternate ease-in-out;
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
+  /* Page entrance fade-in */
+  --animate-page-enter: page-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes page-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   @keyframes shimmer {
     0% {
       background-position: 200% 0;
@@ -223,6 +235,13 @@
     background-color: oklch(from var(--brand-primary) l c h / 0.2);
     color: var(--foreground);
   }
+
+  /* Page entrance */
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      animation: var(--animate-page-enter);
+    }
+  }
 }
 
 /* Premium Custom Utilities */
@@ -314,17 +333,44 @@
 
   /* Custom Premium Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: oklch(from var(--muted-foreground) l c h / 0.25);
+    background: oklch(from var(--muted-foreground) l c h / 0.2);
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(from var(--muted-foreground) l c h / 0.45);
+    background: oklch(from var(--muted-foreground) l c h / 0.4);
+  }
+
+  /* Input focus glow — brand border transition */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    border-color: oklch(from var(--brand-primary) l c h / 0.6);
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  /* Card GPU compositing hint on hover */
+  .card-interactive:hover {
+    will-change: transform;
+  }
+
+  /* Reduced motion: disable all CSS animations and transitions */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion"
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useReducedMotion,
+} from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -22,6 +27,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     },
     ref
   ) => {
+    const shouldReduceMotion = useReducedMotion()
     // Mouse tracking for custom linear border-glow cursor follow
     const mouseX = useMotionValue(0)
     const mouseY = useMotionValue(0)
@@ -37,14 +43,71 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     }
 
     const cardClasses = cn(
-      "group relative overflow-hidden rounded-2xl border transition-all duration-300",
+      "group relative overflow-hidden rounded-2xl border transition-shadow duration-300",
       glass
         ? "glass-panel bg-card/60 dark:bg-card/40"
         : "bg-card border-border text-card-foreground shadow-sm",
-      interactive &&
-        "hover:shadow-md hover:border-muted-foreground/30 hover:-translate-y-0.5",
       className
     )
+
+    if (interactive) {
+      return (
+        <motion.div
+          ref={ref as React.Ref<HTMLDivElement>}
+          onMouseMove={hoverGlow ? handleMouseMove : undefined}
+          className={cardClasses}
+          whileHover={
+            shouldReduceMotion
+              ? {}
+              : {
+                  y: -4,
+                  scale: 1.015,
+                  boxShadow:
+                    "0 12px 28px -4px oklch(from var(--foreground) l c h / 0.1), 0 4px 10px -4px oklch(from var(--foreground) l c h / 0.06)",
+                }
+          }
+          whileTap={shouldReduceMotion ? {} : { scale: 0.995, y: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 22 }}
+          {...(props as React.ComponentPropsWithoutRef<typeof motion.div>)}
+        >
+          {/* Dynamic Glow Overlay for Linear-style cursor tracking */}
+          {hoverGlow && (
+            <motion.div
+              className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{
+                background: useMotionTemplate`
+                  radial-gradient(
+                    450px circle at ${mouseX}px ${mouseY}px,
+                    rgba(99, 102, 241, 0.07),
+                    transparent 80%
+                  )
+                `,
+              }}
+            />
+          )}
+
+          {/* Fine border glow overlay */}
+          {hoverGlow && (
+            <motion.div
+              className="pointer-events-none absolute -inset-px z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{
+                background: useMotionTemplate`
+                  radial-gradient(
+                    140px circle at ${mouseX}px ${mouseY}px,
+                    rgba(99, 102, 241, 0.2),
+                    transparent 80%
+                  )
+                `,
+              }}
+            />
+          )}
+
+          <div className="noise-overlay relative z-20 h-full w-full">
+            {children}
+          </div>
+        </motion.div>
+      )
+    }
 
     return (
       <div
@@ -53,7 +116,6 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         className={cardClasses}
         {...props}
       >
-        {/* Dynamic Glow Overlay for Linear-style cursor tracking */}
         {hoverGlow && (
           <motion.div
             className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -61,7 +123,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
               background: useMotionTemplate`
                 radial-gradient(
                   450px circle at ${mouseX}px ${mouseY}px,
-                  rgba(99, 102, 241, 0.08),
+                  rgba(99, 102, 241, 0.07),
                   transparent 80%
                 )
               `,
@@ -69,15 +131,14 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
           />
         )}
 
-        {/* Fine border glow overlay */}
         {hoverGlow && (
           <motion.div
             className="pointer-events-none absolute -inset-px z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             style={{
               background: useMotionTemplate`
                 radial-gradient(
-                  150px circle at ${mouseX}px ${mouseY}px,
-                  rgba(99, 102, 241, 0.25),
+                  140px circle at ${mouseX}px ${mouseY}px,
+                  rgba(99, 102, 241, 0.2),
                   transparent 80%
                 )
               `,

@@ -1,23 +1,44 @@
+"use client"
+
+import { motion, useReducedMotion } from "framer-motion"
 import { Heading } from "@/components/ui/heading"
 import { Badge } from "@/components/ui/badge"
 import { heroContent } from "@/content/hero"
 import { HeroActions } from "./hero-actions"
 import { HeroSocial } from "./hero-social"
+import {
+  heroStagger,
+  fadeIn,
+  fadeInUp,
+  scaleFadeIn,
+  noMotion,
+} from "@/lib/animations"
 
 export function HeroContent() {
+  const shouldReduceMotion = useReducedMotion()
+
+  const container = shouldReduceMotion ? noMotion(heroStagger) : heroStagger
+  const item = shouldReduceMotion ? noMotion(fadeInUp) : fadeInUp
+  const badge = shouldReduceMotion ? noMotion(scaleFadeIn) : scaleFadeIn
+
   return (
-    <div className="space-y-6">
+    <motion.div
+      className="space-y-6"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Eyebrow badge */}
       {heroContent.badge && (
-        <div>
+        <motion.div variants={badge}>
           <Badge variant="brand" className="tracking-wider uppercase">
             {heroContent.badge}
           </Badge>
-        </div>
+        </motion.div>
       )}
 
       {/* Main heading */}
-      <div className="space-y-3">
+      <motion.div className="space-y-3" variants={item}>
         <Heading
           size="h1"
           as="h1"
@@ -28,21 +49,28 @@ export function HeroContent() {
             {heroContent.titleGradientText}
           </span>
         </Heading>
-      </div>
+      </motion.div>
 
       {/* Supporting description */}
-      <p className="text-muted-foreground max-w-xl text-base leading-relaxed sm:text-lg">
+      <motion.p
+        className="text-muted-foreground max-w-xl text-base leading-relaxed sm:text-lg"
+        variants={item}
+      >
         {heroContent.subtitle}
-      </p>
+      </motion.p>
 
       {/* CTA Buttons */}
-      <HeroActions />
+      <motion.div variants={item}>
+        <HeroActions />
+      </motion.div>
 
       {/* Divider */}
-      <div className="bg-border/40 h-px w-full pt-1" />
+      <motion.div className="bg-border/40 h-px w-full pt-1" variants={fadeIn} />
 
       {/* Social Links */}
-      <HeroSocial />
-    </div>
+      <motion.div variants={item}>
+        <HeroSocial />
+      </motion.div>
+    </motion.div>
   )
 }

@@ -1,6 +1,8 @@
+import { motion, useReducedMotion } from "framer-motion"
 import { socialLinks } from "@/content/social"
 
 export function HeroSocial() {
+  const shouldReduceMotion = useReducedMotion()
   const renderSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
       case "github":
@@ -72,16 +74,19 @@ export function HeroSocial() {
       </span>
       <div className="flex items-center gap-4">
         {filteredLinks.map((link) => (
-          <a
+          <motion.a
             key={link.platform}
             href={link.url}
             target="_blank"
             rel="noreferrer"
-            className="text-muted-foreground hover:text-foreground hover:bg-muted/30 dark:hover:bg-muted/20 focus-visible:outline-brand-primary flex size-12 items-center justify-center rounded-full transition-all duration-200 focus-visible:outline-2"
+            className="text-muted-foreground hover:text-foreground hover:bg-muted/30 dark:hover:bg-muted/20 focus-visible:outline-brand-primary flex size-12 items-center justify-center rounded-full transition-colors duration-200 focus-visible:outline-2"
             aria-label={`View Hariprasad's ${link.platform} profile`}
+            whileHover={shouldReduceMotion ? {} : { scale: 1.12 }}
+            whileTap={shouldReduceMotion ? {} : { scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
             {renderSocialIcon(link.platform)}
-          </a>
+          </motion.a>
         ))}
       </div>
     </div>

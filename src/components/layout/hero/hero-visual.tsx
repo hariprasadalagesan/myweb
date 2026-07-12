@@ -6,9 +6,12 @@ export function HeroVisual() {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <div
+    <motion.div
       className="relative flex aspect-square w-full max-w-sm items-center justify-center"
       aria-hidden="true"
+      initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.7, delay: 0.35 }}
     >
       {/* Radial Gradient Backlight Glow */}
       <div className="from-brand-cyan/10 via-brand-primary/10 to-brand-purple/10 absolute inset-0 rounded-full bg-gradient-to-tr blur-3xl" />
@@ -85,7 +88,7 @@ export function HeroVisual() {
           <span>production.ready</span>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
 export default HeroVisual
