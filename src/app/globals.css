@@ -47,6 +47,28 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
+  /* Z-index tokens */
+  --z-behind: -1;
+  --z-base: 0;
+  --z-navbar: 50;
+  --z-dropdown: 60;
+  --z-modal: 100;
+  --z-toast: 150;
+
+  /* Animation Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* Premium Shadows using OKLCH foreground colors */
+  --shadow-premium-sm: 0 1px 2px 0 oklch(var(--foreground) / 0.03);
+  --shadow-premium-md:
+    0 4px 6px -1px oklch(var(--foreground) / 0.05),
+    0 2px 4px -2px oklch(var(--foreground) / 0.05);
+  --shadow-premium-lg:
+    0 10px 15px -3px oklch(var(--foreground) / 0.08),
+    0 4px 6px -4px oklch(var(--foreground) / 0.08);
+
   /* Premium Brand Colors (Linear & Apple inspired) */
   --color-brand-primary: var(--brand-primary);
   --color-brand-cyan: var(--brand-cyan);
