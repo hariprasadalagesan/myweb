@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata = constructMetadata({
-  title: `${siteMetadata.name} — ${siteMetadata.title}`,
+  title: siteMetadata.title,
   description: siteMetadata.description,
 })
 

@@ -381,6 +381,24 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         </div>
       )}
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareSourceCode",
+            name: project.title,
+            description: project.description,
+            programmingLanguage: project.technologies,
+            codeRepository: project.github || "",
+            author: {
+              "@type": "Person",
+              name: "Hariprasad T A",
+            },
+          }),
+        }}
+      />
     </Container>
   )
 }

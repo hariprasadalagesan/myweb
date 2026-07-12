@@ -330,6 +330,42 @@ export default function Home() {
           </div>
         </Container>
       </Section>
+
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Hariprasad T A",
+            jobTitle: "Python Backend Developer",
+            worksFor: {
+              "@type": "Organization",
+              name: "Maestro Technology Services",
+            },
+            alumniOf: {
+              "@type": "CollegeOrUniversity",
+              name: "Karpagam College of Engineering",
+            },
+            url: "https://hariworks.com",
+            sameAs: [
+              "https://github.com/hariprasadalagesan",
+              "https://linkedin.com/in/hariprasad-alagesan",
+            ],
+            knowsAbout: [
+              "Python",
+              "FastAPI",
+              "SQLAlchemy",
+              "MySQL",
+              "Docker",
+              "IoT",
+              "REST APIs",
+              "MQTT",
+            ],
+          }),
+        }}
+      />
     </Container>
   )
 }
