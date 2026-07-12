@@ -1,20 +1,18 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { ArrowUpRight, Mail, MapPin, Download } from "lucide-react"
 import { Container, Section, SectionHeader } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
-import { Badge } from "@/components/ui/badge"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Divider } from "@/components/ui/divider"
-import { cn } from "@/lib/utils"
 import { Card, CardContent } from "@/components/ui/card"
 import { ProjectCard } from "@/components/ui/project-card"
 import { SkillCard } from "@/components/ui/skill-card"
 import { Timeline } from "@/components/ui/timeline"
 
+import { Hero } from "@/components/layout/hero"
+
 // Content imports
-import { heroContent } from "@/content/hero"
 import { aboutContent } from "@/content/about"
 import { skillsData } from "@/content/skills"
 import { projectsData } from "@/content/projects"
@@ -22,68 +20,11 @@ import { experienceData } from "@/content/experience"
 import { contactContent } from "@/content/contact"
 import { socialLinks } from "@/content/social"
 
-// Animation Presets
-import { fadeInUp, staggerContainer } from "@/lib/animations"
-
 export default function Home() {
   return (
     <Container clean>
       {/* 1. HERO SECTION */}
-      <Section id="home" className="flex min-h-[85vh] items-center py-20">
-        <Container>
-          <motion.div
-            variants={staggerContainer(0.15, 0.1)}
-            initial="hidden"
-            animate="visible"
-            className="max-w-4xl space-y-6"
-          >
-            {heroContent.badge && (
-              <motion.div variants={fadeInUp}>
-                <Badge variant="brand" className="tracking-wider uppercase">
-                  {heroContent.badge}
-                </Badge>
-              </motion.div>
-            )}
-
-            <motion.div variants={fadeInUp}>
-              <Heading size="h1" as="h1">
-                {heroContent.title}{" "}
-                <span className="text-gradient-brand">
-                  {heroContent.titleGradientText}
-                </span>
-              </Heading>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-muted-foreground max-w-2xl text-lg leading-relaxed sm:text-xl"
-            >
-              {heroContent.subtitle}
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-wrap gap-4 pt-4"
-            >
-              {heroContent.actions.map((action) => (
-                <a
-                  key={action.label}
-                  href={action.href}
-                  className={cn(
-                    buttonVariants({ variant: action.variant, size: "lg" }),
-                    "cursor-pointer gap-1 rounded-full"
-                  )}
-                >
-                  {action.label}
-                  {action.icon === "ArrowRight" && (
-                    <ArrowUpRight className="size-4" />
-                  )}
-                </a>
-              ))}
-            </motion.div>
-          </motion.div>
-        </Container>
-      </Section>
+      <Hero />
 
       <Divider variant="gradient" />
 

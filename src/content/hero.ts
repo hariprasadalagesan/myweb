@@ -14,10 +14,15 @@ export const heroContent: HeroContent = {
       icon: "ArrowRight",
     },
     {
-      label: "Read Case Studies",
-      href: "#experience",
+      label: "Download Resume",
+      href: "#resume",
       variant: "outline",
-      icon: "Layers",
+      icon: "Download",
+    },
+    {
+      label: "Contact Me",
+      href: "#contact",
+      variant: "ghost",
     },
   ],
 }
