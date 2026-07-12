@@ -1,9 +1,11 @@
 "use client"
 
+import Link from "next/link"
 import { ExternalLink } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Heading } from "@/components/ui/heading"
+import { buttonVariants } from "@/components/ui/button"
 import { Project } from "@/types"
 import { cn } from "@/lib/utils"
 
@@ -23,35 +25,45 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <Card
       hoverGlow
-      interactive
-      className={cn("flex h-full flex-col", className)}
+      interactive={false}
+      className={cn("group flex h-full flex-col overflow-hidden", className)}
     >
-      <CardContent className="flex h-full flex-col p-6">
-        {/* Category & Status Badge */}
-        <div className="mb-4 flex items-center justify-between">
-          <span className="text-brand-primary text-xs font-semibold tracking-wider uppercase">
-            {project.category}
-          </span>
-          <Badge variant={statusColorMap[project.status]}>
+      {/* 1. Project Image Placeholder Header with brand gradients and grid overlay */}
+      <div className="border-border/20 from-brand-primary/10 via-brand-purple/10 to-brand-cyan/10 relative flex h-40 w-full items-center justify-center overflow-hidden border-b bg-gradient-to-br">
+        <div className="grid-bg absolute inset-0 opacity-30" />
+        {/* Glow core */}
+        <div className="bg-brand-primary/20 absolute top-1/2 left-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl" />
+        {/* Pill descriptor */}
+        <span className="text-muted-foreground bg-background/85 dark:bg-background/90 border-border/25 shadow-premium-sm relative z-10 rounded-full border px-3 py-1.5 font-mono text-[10px] tracking-widest uppercase backdrop-blur-md">
+          {project.category}
+        </span>
+      </div>
+
+      {/* 2. Card Content details */}
+      <CardContent className="flex flex-grow flex-col p-6">
+        {/* Header: Title & Status Badge */}
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <Heading
+            size="h3"
+            as="h3"
+            className="group-hover:text-brand-primary line-clamp-1 transition-colors"
+          >
+            {project.title}
+          </Heading>
+          <Badge
+            variant={statusColorMap[project.status]}
+            className="shrink-0 font-mono text-[9px] uppercase"
+          >
             {project.status.replace("-", " ")}
           </Badge>
         </div>
 
-        {/* Title */}
-        <Heading
-          size="h3"
-          as="h3"
-          className="group-hover:text-brand-primary mb-2 line-clamp-1"
-        >
-          {project.title}
-        </Heading>
-
-        {/* Description */}
+        {/* Short Description */}
         <p className="text-muted-foreground mb-6 line-clamp-3 flex-grow text-sm leading-relaxed">
           {project.description}
         </p>
 
-        {/* Technologies */}
+        {/* Technologies List */}
         <div className="mb-6 flex flex-wrap gap-1.5">
           {project.technologies.slice(0, 4).map((tech) => (
             <Badge
@@ -72,20 +84,24 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         {/* Divider */}
         <div className="bg-border/40 mb-4 h-px w-full" />
 
-        {/* Action Links */}
+        {/* Bottom Actions Row */}
         <div className="mt-auto flex items-center justify-between">
-          {project.year && (
-            <span className="text-muted-foreground font-mono text-xs">
-              {project.year}
-            </span>
-          )}
-          <div className="ml-auto flex items-center gap-3">
+          <Link
+            href={`/projects/${project.slug}`}
+            className={cn(
+              buttonVariants({ variant: "outline", size: "sm" }),
+              "focus-visible:ring-brand-primary cursor-pointer rounded-full text-xs font-semibold focus-visible:ring-2"
+            )}
+          >
+            View Case Study
+          </Link>
+          <div className="flex items-center gap-3">
             {project.github && (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
-                className="text-muted-foreground hover:text-foreground p-1 transition-colors"
+                className="text-muted-foreground hover:text-foreground focus-visible:outline-brand-primary rounded-md p-1 transition-colors focus-visible:outline-2"
                 aria-label={`View ${project.title} source code on GitHub`}
               >
                 <svg
@@ -108,7 +124,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 href={project.liveDemo}
                 target="_blank"
                 rel="noreferrer"
-                className="text-muted-foreground hover:text-foreground p-1 transition-colors"
+                className="text-muted-foreground hover:text-foreground focus-visible:outline-brand-primary rounded-md p-1 transition-colors focus-visible:outline-2"
                 aria-label={`View ${project.title} live demo`}
               >
                 <ExternalLink className="size-4.5" />
