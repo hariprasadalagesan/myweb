@@ -1,11 +1,20 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ExternalLink, Database, Server } from "lucide-react"
+import {
+  ArrowLeft,
+  ExternalLink,
+  Database,
+  Server,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+} from "lucide-react"
 import { Container, Section } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { ProjectCard } from "@/components/ui/project-card"
 import { projectsData } from "@/content/projects"
 import { cn } from "@/lib/utils"
 
@@ -35,8 +44,13 @@ export default async function ProjectPage({ params }: PageProps) {
     maintenance: "default",
   } as const
 
+  // Get 2 related projects to display at the bottom
+  const relatedProjects = projectsData
+    .filter((p) => p.slug !== project.slug)
+    .slice(0, 2)
+
   return (
-    <Container className="py-12 md:py-20">
+    <Container className="max-w-6xl py-12 md:py-20">
       {/* Back navigation link */}
       <div className="mb-8">
         <Link
@@ -48,9 +62,12 @@ export default async function ProjectPage({ params }: PageProps) {
         </Link>
       </div>
 
-      {/* Hero section inside page */}
-      <div className="border-border/40 space-y-4 border-b pb-8">
-        <div className="flex flex-wrap items-center gap-3">
+      {/* 1. HERO BANNER HEADER */}
+      <div className="border-border/40 relative space-y-4 overflow-hidden border-b pb-8">
+        {/* Glow decoration */}
+        <div className="bg-brand-primary/10 absolute -top-12 -right-12 size-40 rounded-full blur-3xl" />
+
+        <div className="relative z-10 flex flex-wrap items-center gap-3">
           <span className="text-brand-primary font-mono text-xs tracking-wider uppercase">
             {project.category}
           </span>
@@ -59,11 +76,15 @@ export default async function ProjectPage({ params }: PageProps) {
           </Badge>
         </div>
 
-        <Heading size="h1" as="h1" className="leading-tight tracking-tight">
+        <Heading
+          size="h1"
+          as="h1"
+          className="relative z-10 max-w-4xl leading-tight tracking-tight"
+        >
           {project.title}
         </Heading>
 
-        <div className="text-muted-foreground flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-sm">
+        <div className="text-muted-foreground relative z-10 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-sm">
           {project.role && (
             <div className="flex items-center gap-1.5">
               <span className="text-muted-foreground/60">Role:</span>
@@ -82,91 +103,175 @@ export default async function ProjectPage({ params }: PageProps) {
       {/* Main content grid */}
       <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-12">
         {/* Left Side: Case Study Content */}
-        <div className="space-y-8 lg:col-span-8">
+        <div className="space-y-12 lg:col-span-8">
+          {/* 2. OVERVIEW */}
           <Section className="space-y-4 py-0">
             <Heading size="h2" as="h2" className="tracking-tight">
-              Project Overview
+              Overview
             </Heading>
             <p className="text-muted-foreground text-base leading-relaxed">
               {project.longDescription || project.description}
             </p>
           </Section>
 
-          {/* Technical Implementation details */}
-          <Section className="space-y-6 py-0">
-            <Heading size="h2" as="h2" className="tracking-tight">
-              Technical Implementation
-            </Heading>
+          {/* 3. PROBLEM & 4. SOLUTION */}
+          {(project.problemStatement || project.solution) && (
+            <Section className="grid grid-cols-1 gap-6 py-0 md:grid-cols-2">
+              {project.problemStatement && (
+                <Card
+                  interactive={false}
+                  className="border-red-500/10 bg-red-500/5 dark:bg-red-500/5"
+                >
+                  <CardContent className="space-y-3 p-6">
+                    <div className="flex items-center gap-2 text-red-500">
+                      <AlertTriangle className="size-4.5 shrink-0" />
+                      <Heading size="h4" as="h3" className="font-semibold">
+                        Problem Statement
+                      </Heading>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {project.problemStatement}
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+              {project.solution && (
+                <Card
+                  interactive={false}
+                  className="border-green-500/10 bg-green-500/5 dark:bg-green-500/5"
+                >
+                  <CardContent className="space-y-3 p-6">
+                    <div className="flex items-center gap-2 text-green-500">
+                      <CheckCircle2 className="size-4.5 shrink-0" />
+                      <Heading size="h4" as="h3" className="font-semibold">
+                        Proposed Solution
+                      </Heading>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {project.solution}
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+            </Section>
+          )}
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <Card interactive={false}>
-                <CardContent className="space-y-3 p-5">
-                  <div className="flex items-center gap-2">
-                    <Server className="text-brand-primary size-4" />
+          {/* 5. ARCHITECTURE */}
+          {project.architecture && (
+            <Section className="space-y-4 py-0">
+              <Heading size="h2" as="h2" className="tracking-tight">
+                System Architecture
+              </Heading>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {project.architecture}
+              </p>
+              {/* Architecture visual block */}
+              <div className="border-border/20 bg-background/30 grid-bg relative flex h-44 w-full items-center justify-center overflow-hidden rounded-xl border p-6 text-center">
+                <div className="from-brand-primary/5 to-brand-cyan/5 absolute inset-0 bg-gradient-to-r opacity-50" />
+                <div className="text-muted-foreground relative z-10 space-y-2 font-mono text-[11px]">
+                  <div className="flex items-center justify-center gap-2">
+                    <Server className="text-brand-primary size-4 animate-pulse" />
+                    <span className="text-foreground font-semibold uppercase">
+                      API Client Request
+                    </span>
+                  </div>
+                  <div className="bg-border mx-auto my-1 h-4 w-px" />
+                  <div className="flex items-center justify-center gap-4">
+                    <div className="border-border/40 bg-card rounded border px-2.5 py-1">
+                      FastAPI routing
+                    </div>
+                    <div className="border-border/40 bg-card rounded border px-2.5 py-1">
+                      SQLAlchemy ORM
+                    </div>
+                  </div>
+                  <div className="bg-border mx-auto my-1 h-4 w-px" />
+                  <div className="flex items-center justify-center gap-2">
+                    <Database className="text-brand-cyan size-4" />
+                    <span className="text-foreground font-semibold">
+                      MySQL Relational DB
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Section>
+          )}
+
+          {/* 6. FEATURES */}
+          {project.features && project.features.length > 0 && (
+            <Section className="space-y-4 py-0">
+              <Heading size="h2" as="h2" className="tracking-tight">
+                Key Features
+              </Heading>
+              <ul className="grid list-none grid-cols-1 gap-3 pl-0 sm:grid-cols-2">
+                {project.features.map((feat) => (
+                  <li
+                    key={feat}
+                    className="text-muted-foreground relative flex items-start gap-2 pl-6 text-sm leading-relaxed"
+                  >
+                    <CheckCircle2 className="text-brand-primary mt-0.5 size-4 shrink-0" />
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          )}
+
+          {/* 8. CHALLENGES FACED & 9. WHAT I LEARNED */}
+          {(project.challenges || project.learned) && (
+            <Section className="space-y-8 py-0">
+              {project.challenges && (
+                <div className="space-y-3">
+                  <Heading size="h2" as="h2" className="tracking-tight">
+                    Challenges Faced
+                  </Heading>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {project.challenges}
+                  </p>
+                </div>
+              )}
+              {project.learned && (
+                <div className="border-border/40 space-y-3 border-t pt-6">
+                  <div className="text-brand-primary flex items-center gap-2">
+                    <Lightbulb className="size-5" />
                     <Heading
-                      size="h4"
-                      as="h3"
-                      className="text-foreground font-semibold"
+                      size="h2"
+                      as="h2"
+                      className="text-foreground tracking-tight"
                     >
-                      API Architecture
+                      What I Learned
                     </Heading>
                   </div>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
-                    Designed using REST principles. Features standardized
-                    request validation, async routing pipelines, and structured
-                    JSON serializer schemas.
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {project.learned}
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              )}
+            </Section>
+          )}
 
-              <Card interactive={false}>
-                <CardContent className="space-y-3 p-5">
-                  <div className="flex items-center gap-2">
-                    <Database className="text-brand-primary size-4" />
-                    <Heading
-                      size="h4"
-                      as="h3"
-                      className="text-foreground font-semibold"
-                    >
-                      Database & ORM
-                    </Heading>
-                  </div>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
-                    Built relational tables in MySQL. Managed sessions,
-                    connections, and complex table joins using SQLAlchemy and
-                    SQLModel ORM strategies.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </Section>
-
-          {/* Core challenges */}
+          {/* 10. GALLERY / SCREENSHOTS */}
           <Section className="space-y-4 py-0">
             <Heading size="h2" as="h2" className="tracking-tight">
-              Engineering Achievements
+              Gallery & Mock Previews
             </Heading>
-            <ul className="list-none space-y-3 pl-0">
-              <li className="text-muted-foreground relative pl-5 text-sm leading-relaxed">
-                <span className="bg-brand-primary absolute top-2.5 left-0 size-1.5 rounded-full" />
-                Containerized backend web applications with Docker to guarantee
-                absolute local configuration parity.
-              </li>
-              <li className="text-muted-foreground relative pl-5 text-sm leading-relaxed">
-                <span className="bg-brand-primary absolute top-2.5 left-0 size-1.5 rounded-full" />
-                Designed modular components preventing file coupling and
-                spaghetti code practices.
-              </li>
-              <li className="text-muted-foreground relative pl-5 text-sm leading-relaxed">
-                <span className="bg-brand-primary absolute top-2.5 left-0 size-1.5 rounded-full" />
-                Implemented structured unit testing configurations verifying
-                mock database transaction rollbacks.
-              </li>
-            </ul>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="border-border/25 from-brand-primary/5 via-brand-purple/5 to-brand-cyan/5 group relative flex h-44 items-center justify-center overflow-hidden rounded-xl border bg-gradient-to-tr p-6">
+                <div className="grid-bg absolute inset-0 opacity-20" />
+                <span className="text-muted-foreground bg-background/80 border-border/20 rounded border px-3 py-1 font-mono text-[10px] tracking-widest uppercase">
+                  Mock System Frame
+                </span>
+              </div>
+              <div className="border-border/25 from-brand-cyan/5 via-brand-primary/5 to-brand-purple/5 group relative flex h-44 items-center justify-center overflow-hidden rounded-xl border bg-gradient-to-br p-6">
+                <div className="grid-bg absolute inset-0 opacity-20" />
+                <span className="text-muted-foreground bg-background/80 border-border/20 rounded border px-3 py-1 font-mono text-[10px] tracking-widest uppercase">
+                  Active Database log
+                </span>
+              </div>
+            </div>
           </Section>
         </div>
 
-        {/* Right Side: Metadata Sidebar Card */}
+        {/* Right Side: Metadata Sidebar (7. Tech Stack, 11. Github, 12. Live Demo) */}
         <div className="lg:col-span-4">
           <div className="sticky top-24 space-y-6">
             <Card
@@ -177,7 +282,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 {/* Tech Stack */}
                 <div className="space-y-3">
                   <span className="text-muted-foreground block font-mono text-xs tracking-widest uppercase">
-                    Technologies
+                    Technology Stack
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {project.technologies.map((tech) => (
@@ -195,7 +300,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 {/* Status info */}
                 <div className="border-border/40 space-y-1.5 border-t pt-4">
                   <span className="text-muted-foreground block font-mono text-xs tracking-widest uppercase">
-                    Status
+                    Development Status
                   </span>
                   <span className="text-foreground text-sm font-semibold tracking-wider uppercase">
                     {project.status.replace("-", " ")}
@@ -258,6 +363,24 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         </div>
       </div>
+
+      {/* 13. RELATED PROJECTS */}
+      {relatedProjects.length > 0 && (
+        <div className="border-border/40 mt-20 space-y-8 border-t pt-16">
+          <Heading
+            size="h2"
+            as="h2"
+            className="text-center tracking-tight md:text-left"
+          >
+            Related Projects
+          </Heading>
+          <div className="grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
+            {relatedProjects.map((relatedProj) => (
+              <ProjectCard key={relatedProj.slug} project={relatedProj} />
+            ))}
+          </div>
+        </div>
+      )}
     </Container>
   )
 }

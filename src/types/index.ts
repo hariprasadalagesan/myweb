@@ -71,6 +71,12 @@ export interface Project {
   status: ProjectStatus
   role?: string
   year?: string
+  problemStatement?: string
+  solution?: string
+  architecture?: string
+  features?: string[]
+  challenges?: string
+  learned?: string
 }
 
 export interface ExperienceItem {
