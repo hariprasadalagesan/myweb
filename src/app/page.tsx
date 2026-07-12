@@ -301,28 +301,81 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Contact Form Placeholder */}
+            {/* Contact Form */}
             <div className="flex items-center">
               <Card interactive={false} className="w-full p-6">
-                <div className="space-y-4">
+                <form className="space-y-4">
                   <Heading size="h4" as="h4">
                     Send a Message
                   </Heading>
                   <p className="text-muted-foreground text-xs">
-                    Contact form will be wired up to the production endpoint (
+                    Contact form will submit to the production endpoint (
                     {contactContent.formActionUrl}).
                   </p>
 
-                  {/* Styled Placeholders */}
-                  <div className="space-y-3 pt-2">
-                    <div className="bg-muted/60 dark:bg-muted/40 border-border/10 h-9 w-full rounded-lg border" />
-                    <div className="bg-muted/60 dark:bg-muted/40 border-border/10 h-9 w-full rounded-lg border" />
-                    <div className="bg-muted/60 dark:bg-muted/40 border-border/10 h-24 w-full rounded-lg border" />
-                    <Button disabled className="w-full rounded-lg">
+                  <div className="space-y-3 pt-2 text-left">
+                    <div className="space-y-1">
+                      <label
+                        htmlFor="form-name"
+                        className="text-foreground text-xs font-semibold"
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        id="form-name"
+                        type="text"
+                        name="name"
+                        placeholder="John Doe"
+                        className="border-border/40 bg-muted/65 dark:bg-muted/30 text-foreground focus-visible:ring-brand-primary h-9 w-full rounded-lg border px-3 py-1 text-sm focus-visible:ring-1 focus-visible:outline-none"
+                        required
+                        disabled
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label
+                        htmlFor="form-email"
+                        className="text-foreground text-xs font-semibold"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        id="form-email"
+                        type="email"
+                        name="email"
+                        placeholder="john@example.com"
+                        className="border-border/40 bg-muted/65 dark:bg-muted/30 text-foreground focus-visible:ring-brand-primary h-9 w-full rounded-lg border px-3 py-1 text-sm focus-visible:ring-1 focus-visible:outline-none"
+                        required
+                        disabled
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label
+                        htmlFor="form-message"
+                        className="text-foreground text-xs font-semibold"
+                      >
+                        Your Message
+                      </label>
+                      <textarea
+                        id="form-message"
+                        name="message"
+                        placeholder="Hello, I'd like to talk about..."
+                        rows={4}
+                        className="border-border/40 bg-muted/65 dark:bg-muted/30 text-foreground focus-visible:ring-brand-primary w-full resize-none rounded-lg border px-3 py-2 text-sm focus-visible:ring-1 focus-visible:outline-none"
+                        required
+                        disabled
+                      />
+                    </div>
+
+                    <Button
+                      disabled
+                      className="w-full cursor-not-allowed rounded-lg"
+                    >
                       Submit Message
                     </Button>
                   </div>
-                </div>
+                </form>
               </Card>
             </div>
           </div>

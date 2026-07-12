@@ -39,8 +39,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <a
+            href="#main-content"
+            className="focus:bg-background focus:text-foreground focus:border-brand-primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:border-2 focus:px-4 focus:py-2 focus:shadow-md"
+          >
+            Skip to Content
+          </a>
           <Navbar />
-          <main className="flex flex-1 flex-col pt-20">{children}</main>
+          <main id="main-content" className="flex flex-1 flex-col pt-20">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
