@@ -60,14 +60,13 @@
   --duration-normal: 250ms;
   --duration-slow: 400ms;
 
-  /* Premium Shadows using OKLCH foreground colors */
-  --shadow-premium-sm: 0 1px 2px 0 oklch(var(--foreground) / 0.03);
+  --shadow-premium-sm: 0 1px 2px 0 oklch(from var(--foreground) l c h / 0.03);
   --shadow-premium-md:
-    0 4px 6px -1px oklch(var(--foreground) / 0.05),
-    0 2px 4px -2px oklch(var(--foreground) / 0.05);
+    0 4px 6px -1px oklch(from var(--foreground) l c h / 0.05),
+    0 2px 4px -2px oklch(from var(--foreground) l c h / 0.05);
   --shadow-premium-lg:
-    0 10px 15px -3px oklch(var(--foreground) / 0.08),
-    0 4px 6px -4px oklch(var(--foreground) / 0.08);
+    0 10px 15px -3px oklch(from var(--foreground) l c h / 0.08),
+    0 4px 6px -4px oklch(from var(--foreground) l c h / 0.08);
 
   /* Premium Brand Colors (Linear & Apple inspired) */
   --color-brand-primary: var(--brand-primary);
@@ -195,12 +194,12 @@
     background-image:
       radial-gradient(
         at 0% 0%,
-        oklch(var(--brand-primary) / 0.03) 0px,
+        oklch(from var(--brand-primary) l c h / 0.03) 0px,
         transparent 50%
       ),
       radial-gradient(
         at 100% 100%,
-        oklch(var(--brand-purple) / 0.03) 0px,
+        oklch(from var(--brand-purple) l c h / 0.03) 0px,
         transparent 50%
       );
   }
@@ -221,7 +220,7 @@
 
   /* Selection Highlights */
   ::selection {
-    background-color: oklch(var(--brand-primary) / 0.2);
+    background-color: oklch(from var(--brand-primary) l c h / 0.2);
     color: var(--foreground);
   }
 }
@@ -230,14 +229,14 @@
 @layer utilities {
   /* Glassmorphism Panels */
   .glass-panel {
-    background: rgba(var(--background), 0.7);
+    background: oklch(from var(--background) l c h / 0.7);
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     border: 1px solid var(--border);
   }
 
   .glass-navbar {
-    background: rgba(var(--background), 0.75);
+    background: oklch(from var(--background) l c h / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
@@ -303,12 +302,12 @@
     background-image:
       linear-gradient(
         to right,
-        oklch(var(--border) / 0.5) 1px,
+        oklch(from var(--border) l c h / 0.5) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        oklch(var(--border) / 0.5) 1px,
+        oklch(from var(--border) l c h / 0.5) 1px,
         transparent 1px
       );
   }
@@ -322,10 +321,10 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: oklch(var(--muted-foreground) / 0.25);
+    background: oklch(from var(--muted-foreground) l c h / 0.25);
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(var(--muted-foreground) / 0.45);
+    background: oklch(from var(--muted-foreground) l c h / 0.45);
   }
 }

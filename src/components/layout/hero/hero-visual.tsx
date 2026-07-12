@@ -6,7 +6,10 @@ export function HeroVisual() {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <div className="relative flex aspect-square w-full max-w-sm items-center justify-center">
+    <div
+      className="relative flex aspect-square w-full max-w-sm items-center justify-center"
+      aria-hidden="true"
+    >
       {/* Radial Gradient Backlight Glow */}
       <div className="from-brand-cyan/10 via-brand-primary/10 to-brand-purple/10 absolute inset-0 rounded-full bg-gradient-to-tr blur-3xl" />
 
