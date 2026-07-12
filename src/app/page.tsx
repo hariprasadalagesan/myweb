@@ -26,7 +26,7 @@ import { HeroSection } from "@/components/layout/hero"
 import { aboutContent } from "@/content/about"
 import { skillsData } from "@/content/skills"
 import { projectsData } from "@/content/projects"
-import { experienceData } from "@/content/experience"
+import { experienceData, journeyTimelineData } from "@/content/experience"
 import { currentlyBuildingData } from "@/content/currently-building"
 import { contactContent } from "@/content/contact"
 import { socialLinks } from "@/content/social"
@@ -130,13 +130,42 @@ export default function Home() {
       {/* 5. EXPERIENCE SECTION */}
       <Section id="experience" className="scroll-mt-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
-            <SectionHeader
-              title="Career History"
-              subtitle="Maestro Technology Services internship and structured backend developer engagements."
-              badge="04 / Experience"
-            />
-            <Timeline items={experienceData} />
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
+            {/* Left Column: Career Timeline */}
+            <div className="space-y-8 lg:col-span-7">
+              <SectionHeader
+                title="Career & Education"
+                subtitle="Internship experience at Maestro Technology Services and Karpagam College degree."
+                badge="04 / Experience"
+              />
+              <Timeline items={experienceData} />
+            </div>
+
+            {/* Right Column: Professional Journey Roadmap */}
+            <div className="lg:border-border/60 space-y-8 lg:col-span-5 lg:border-l lg:pl-12">
+              <SectionHeader
+                title="Professional Journey"
+                subtitle="Chronological roadmap highlights from student to Python backend intern."
+                badge="Roadmap"
+              />
+              <div className="border-border/80 relative space-y-8 border-l py-2 pl-6">
+                {journeyTimelineData.map((item, idx) => (
+                  <div key={idx} className="group relative">
+                    <span className="bg-background border-border group-hover:border-brand-primary absolute top-1 -left-[31px] flex size-4.5 items-center justify-center rounded-full border-2 transition-colors">
+                      <span className="bg-muted-foreground/60 group-hover:bg-brand-primary size-1.5 rounded-full transition-colors" />
+                    </span>
+                    <div className="space-y-1">
+                      <span className="text-brand-primary font-mono text-xs font-bold">
+                        {item.year}
+                      </span>
+                      <p className="text-foreground text-sm leading-snug font-medium">
+                        {item.title}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </Section>

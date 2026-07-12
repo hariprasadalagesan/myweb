@@ -4,75 +4,73 @@ export const skillsData: SkillCategory[] = [
   {
     title: "Backend Development",
     description:
-      "Building robust, secure, and type-safe APIs using Python frameworks.",
+      "Architecting REST endpoints, authorization systems, and server routers.",
     skills: [
-      {
-        name: "Python",
-        level: 90,
-        proficiency: "Advanced",
-        iconName: "Python",
-      },
-      {
-        name: "FastAPI / SQLModel",
-        level: 85,
-        proficiency: "Advanced",
-        iconName: "FastAPI",
-      },
-      {
-        name: "SQLAlchemy ORM",
-        level: 80,
-        proficiency: "Advanced",
-        iconName: "SQLAlchemy",
-      },
-      {
-        name: "REST APIs & JWT Auth",
-        level: 85,
-        proficiency: "Advanced",
-        iconName: "Api",
-      },
+      { name: "Python" },
+      { name: "FastAPI" },
+      { name: "SQLAlchemy" },
+      { name: "REST APIs" },
+      { name: "JWT Authentication" },
+      { name: "Role-Based Access Control (RBAC)" },
     ],
   },
   {
-    title: "Databases & DevOps",
-    description: "Designing schemas and containerizing backend applications.",
+    title: "Programming Languages",
+    description: "Writing type-safe, normalized logic and data procedures.",
     skills: [
-      { name: "MySQL", level: 80, proficiency: "Advanced", iconName: "MySQL" },
-      {
-        name: "Docker",
-        level: 75,
-        proficiency: "Intermediate",
-        iconName: "Docker",
-      },
-      {
-        name: "Git & GitHub",
-        level: 85,
-        proficiency: "Advanced",
-        iconName: "Git",
-      },
+      { name: "Python" },
+      { name: "SQL" },
+      { name: "TypeScript (Learning)" },
     ],
   },
   {
-    title: "IoT & Data Analytics",
-    description: "Connecting hardware to brokers and processing raw datasets.",
+    title: "Databases",
+    description: "Modeling schemas, relations, and transactional logic.",
     skills: [
-      {
-        name: "ESP32 Microcontrollers",
-        level: 80,
-        proficiency: "Advanced",
-        iconName: "Esp32",
-      },
-      {
-        name: "MQTT Broker Integration",
-        level: 75,
-        proficiency: "Intermediate",
-        iconName: "Mqtt",
-      },
-      {
-        name: "Data Analytics (Pandas)",
-        level: 70,
-        proficiency: "Intermediate",
-        iconName: "Pandas",
-      },
+      { name: "MySQL" },
+      { name: "ORM Design" },
+      { name: "Query Optimization" },
+    ],
+  },
+  {
+    title: "IoT & Embedded",
+    description: "Wiring microcontrollers and routing local broker messages.",
+    skills: [
+      { name: "ESP32" },
+      { name: "MQTT Protocols" },
+      { name: "Home Automation" },
+    ],
+  },
+  {
+    title: "Data Analytics",
+    description: "Processing datasets and plotting insights.",
+    skills: [
+      { name: "Pandas" },
+      { name: "NumPy" },
+      { name: "Power BI" },
+      { name: "Matplotlib" },
+    ],
+  },
+  {
+    title: "Tools & Platforms",
+    description: "Containerizing services and testing APIs.",
+    skills: [
+      { name: "Git & GitHub" },
+      { name: "Docker" },
+      { name: "Postman" },
+      { name: "VS Code" },
+    ],
+  },
+  {
+    title: "Software Engineering Concepts",
+    description: "Methodologies and patterns for robust coding.",
+    skills: [
+      { name: "OOP (Object-Oriented Programming)" },
+      { name: "API Design" },
+      { name: "Agile Development" },
+      { name: "CI/CD Pipelines" },
+      { name: "Authentication" },
+      { name: "Clean Code" },
     ],
   },
 ]
