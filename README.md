@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HariWorks
 
-## Getting Started
+HariWorks is a premium, high-performance, and responsive personal brand website for Hariprasad, designed to showcase engineering work, projects, technical skills, and software design philosophy.
 
-First, run the development server:
+Inspired by the design languages of Apple, Linear, and Vercel, this project emphasizes minimalism, accessibility (WCAG compliance), speed, and micro-interactions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4 (CSS-first configurations)
+- **Component Primitives**: shadcn/ui + Base UI
+- **Animations**: Framer Motion
+- **Theme Support**: next-themes (Light & Dark Mode)
+- **Icons**: Lucide React
+- **Package Manager**: npm
+
+---
+
+## ✨ Features (Planned & Implemented)
+
+- [x] **Sticky Nav Bar**: Fluid glassmorphic header tracking scroll depth.
+- [x] **Active Link Highlighter**: Viewport scroll observer dynamically sliding navigation focus using Framer Motion layout animations.
+- [x] **Theme Switcher**: Smooth rotation/scaling icon transitions between Light and Dark themes.
+- [x] **Design System Catalog**: Live interactive preview of typography, buttons, colors, glass controls, and custom border hover glows.
+- [ ] **Interactive Projects Showcase**: Categorized card layout fetching details dynamically.
+- [ ] **Engineering Mindset / Case Studies**: Structured markdown logs detailing architectures, trade-offs, and learnings.
+- [ ] **Skills Matrix**: Interactive visualization of core engineering competencies.
+- [ ] **Contact Panel**: Secure API-connected input form.
+
+---
+
+## 📂 Project Structure
+
+```text
+hariworks/
+├── app/                  # Next.js App Router (pages, layouts, globals)
+│   ├── favicon.ico
+│   ├── globals.css       # Design tokens, theme variables, custom utilities
+│   ├── layout.tsx        # Theme wrappers and root document
+│   └── page.tsx          # Design system catalog and main landing page
+├── components/           # UI Components
+│   ├── layout/           # Global components (Navbar, Footer, Menu)
+│   ├── ui/               # Core atomic building blocks (Cards, Buttons, Containers)
+│   └── theme-provider.tsx# Theme provider component (next-themes)
+├── content/              # Static databases (Projects JSON, Case Studies)
+│   └── projects.json
+├── hooks/                # Custom React Hooks (scroll and view observers)
+│   ├── use-scroll.ts
+│   └── use-active-section.ts
+├── lib/                  # Shared helper configuration
+│   └── utils.ts
+├── types/                # Global TypeScript definitions
+│   └── index.ts
+├── utils/                # General utility helper files
+│   └── metadata.ts
+├── public/               # Public assets (images, logos, svg vectors)
+├── package.json          # Dependency scripts
+└── tsconfig.json         # TypeScript configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+Ensure you have [Node.js](https://nodejs.org) (v18.0.0 or higher) installed.
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   git clone https://github.com/hariprasadalagesan/myweb.git
+   cd myweb
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Start the local development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Build the application for production:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "title": "Quantum Analytics Platform",
+    "description": "A high-performance real-time data engine that processes 10M+ events per second. Built using Next.js, Rust-WASM, and TimescaleDB.",
+    "tags": ["Next.js", "TypeScript", "Rust", "WebAssembly", "Tailwind CSS"],
+    "role": "Lead Frontend Engineer",
+    "year": "2025",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Decentralized Credit Network",
+    "description": "A secure p2p borrowing protocol allowing users to secure collateralized loans using algorithmic risk pools.",
+    "tags": ["React", "Ethers.js", "Solidity", "Tailwind CSS"],
+    "role": "Smart Contract Dev",
+    "year": "2024",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "title": "Automated Deployment Pipeline",
+    "description": "An open-source serverless platform facilitating isolated previews for monolithic microservice backends.",
+    "tags": ["Go", "Docker", "Kubernetes", "AWS"],
+    "role": "DevOps Architect",
+    "year": "2024",
+    "featured": false
+  }
+]
