@@ -110,7 +110,7 @@ export function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-full p-1.5 transition-all"
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted/80 dark:hover:bg-muted/40 flex size-11 items-center justify-center rounded-full transition-all"
                   aria-label={`Visit Hariprasad's ${link.platform} profile`}
                 >
                   {renderSocialIcon(link.platform)}

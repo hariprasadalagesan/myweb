@@ -20,7 +20,7 @@ export function ThemeToggle() {
       <Button
         variant="ghost"
         size="icon"
-        className="relative size-9 rounded-full"
+        className="relative size-11 rounded-full"
       >
         <span className="sr-only">Toggle theme</span>
       </Button>
@@ -35,7 +35,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="hover:bg-muted/80 dark:hover:bg-muted/40 focus-visible:ring-brand-primary relative size-9 rounded-full focus-visible:ring-2"
+      className="hover:bg-muted/80 dark:hover:bg-muted/40 focus-visible:ring-brand-primary relative size-11 rounded-full focus-visible:ring-2"
     >
       <span className="sr-only">Toggle theme</span>
       <AnimatePresence mode="wait" initial={false}>

@@ -101,7 +101,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
-                className="text-muted-foreground hover:text-foreground focus-visible:outline-brand-primary rounded-md p-1 transition-colors focus-visible:outline-2"
+                className="text-muted-foreground hover:text-foreground hover:bg-muted/30 dark:hover:bg-muted/20 focus-visible:outline-brand-primary flex size-11 items-center justify-center rounded-full transition-colors focus-visible:outline-2"
                 aria-label={`View ${project.title} source code on GitHub`}
               >
                 <svg
@@ -124,7 +124,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 href={project.liveDemo}
                 target="_blank"
                 rel="noreferrer"
-                className="text-muted-foreground hover:text-foreground focus-visible:outline-brand-primary rounded-md p-1 transition-colors focus-visible:outline-2"
+                className="text-muted-foreground hover:text-foreground hover:bg-muted/30 dark:hover:bg-muted/20 focus-visible:outline-brand-primary flex size-11 items-center justify-center rounded-full transition-colors focus-visible:outline-2"
                 aria-label={`View ${project.title} live demo`}
               >
                 <ExternalLink className="size-4.5" />

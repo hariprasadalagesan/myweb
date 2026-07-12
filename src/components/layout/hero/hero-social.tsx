@@ -77,7 +77,7 @@ export function HeroSocial() {
             href={link.url}
             target="_blank"
             rel="noreferrer"
-            className="text-muted-foreground hover:text-foreground focus-visible:outline-brand-primary rounded-md p-1 transition-all duration-200 focus-visible:outline-2"
+            className="text-muted-foreground hover:text-foreground hover:bg-muted/30 dark:hover:bg-muted/20 focus-visible:outline-brand-primary flex size-12 items-center justify-center rounded-full transition-all duration-200 focus-visible:outline-2"
             aria-label={`View Hariprasad's ${link.platform} profile`}
           >
             {renderSocialIcon(link.platform)}

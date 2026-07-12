@@ -131,7 +131,7 @@ export function Navbar() {
             variant="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="focus-visible:ring-brand-primary size-9 rounded-full focus-visible:ring-2"
+            className="focus-visible:ring-brand-primary size-11 rounded-full focus-visible:ring-2"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label="Toggle menu"
