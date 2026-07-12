@@ -322,8 +322,14 @@ export default function Home() {
                       Send a Message
                     </Heading>
                     <p className="text-muted-foreground text-xs">
-                      Contact form will submit to the production endpoint (
-                      {contactContent.formActionUrl}).
+                      Direct email:{" "}
+                      <a
+                        href={`mailto:${contactContent.email}`}
+                        className="text-brand-primary hover:underline"
+                      >
+                        {contactContent.email}
+                      </a>
+                      . Form submission coming soon.
                     </p>
 
                     <div className="space-y-3 pt-2 text-left">

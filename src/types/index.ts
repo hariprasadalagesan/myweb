@@ -44,8 +44,6 @@ export interface AboutContent {
 
 export interface SkillItem {
   name: string
-  level?: number // Percentage e.g. 90
-  proficiency?: "Beginner" | "Intermediate" | "Advanced" | "Expert"
   iconName?: string
 }
 
@@ -132,4 +130,10 @@ export interface CurrentlyBuildingItem {
   description: string
   status: string
   iconName?: string
+}
+
+/** Single entry in the professional journey roadmap timeline */
+export interface JourneyTimelineItem {
+  year: string
+  title: string
 }

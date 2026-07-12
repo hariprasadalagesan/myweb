@@ -8,6 +8,7 @@ import { Heading } from "@/components/ui/heading"
 import { buttonVariants } from "@/components/ui/button"
 import { Project } from "@/types"
 import { cn } from "@/lib/utils"
+import { statusBadgeVariant, formatStatus } from "@/lib/project-status"
 
 export interface ProjectCardProps {
   project: Project
@@ -15,13 +16,6 @@ export interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
-  const statusColorMap = {
-    completed: "success",
-    "in-progress": "warning",
-    beta: "brand",
-    maintenance: "default",
-  } as const
-
   return (
     <Card
       hoverGlow
@@ -51,10 +45,10 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             {project.title}
           </Heading>
           <Badge
-            variant={statusColorMap[project.status]}
+            variant={statusBadgeVariant[project.status]}
             className="shrink-0 font-mono text-[9px] uppercase"
           >
-            {project.status.replace("-", " ")}
+            {formatStatus(project.status)}
           </Badge>
         </div>
 

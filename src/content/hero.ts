@@ -1,7 +1,7 @@
 import { HeroContent } from "@/types"
 
 export const heroContent: HeroContent = {
-  badge: "Software Engineer • Backend Developer • IoT Enthusiast",
+  badge: "Python Backend Developer • IoT Enthusiast • CS Graduate",
   title: "Building practical software",
   titleGradientText: "for real-world problems.",
   subtitle:

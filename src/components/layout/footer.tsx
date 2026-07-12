@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import { Container } from "@/components/ui/container"
 import { siteMetadata } from "@/content/site"

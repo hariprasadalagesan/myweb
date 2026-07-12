@@ -201,7 +201,7 @@ export const projectsData: Project[] = [
       "Zero client hydration cost for content wrappers",
       "Standard CSS relative colors syntax",
       "prefers-reduced-motion animation bounds",
-      "Dynamic statically-generated Dynamic project pages",
+      "Statically pre-rendered dynamic project case study pages",
     ],
     challenges:
       "Ensuring all interactive UI features work seamlessly under strict TypeScript compiler rules.",

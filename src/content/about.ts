@@ -18,7 +18,7 @@ export const aboutContent: AboutContent = {
     {
       value: "6+",
       label: "Real-World Projects",
-      description: "Including APIs, Web3, & IoT",
+      description: "APIs, IoT Systems & Data Pipelines",
     },
     {
       value: "10+",

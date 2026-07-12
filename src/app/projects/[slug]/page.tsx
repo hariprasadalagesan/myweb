@@ -19,6 +19,7 @@ import { projectsData } from "@/content/projects"
 import { cn } from "@/lib/utils"
 import { Metadata } from "next"
 import { constructMetadata } from "@/utils/metadata"
+import { statusBadgeVariant, formatStatus } from "@/lib/project-status"
 
 export interface PageProps {
   params: Promise<{ slug: string }>
@@ -54,13 +55,6 @@ export default async function ProjectPage({ params }: PageProps) {
     notFound()
   }
 
-  const statusColorMap = {
-    completed: "success",
-    "in-progress": "warning",
-    beta: "brand",
-    maintenance: "default",
-  } as const
-
   // Get 2 related projects to display at the bottom
   const relatedProjects = projectsData
     .filter((p) => p.slug !== project.slug)
@@ -88,8 +82,8 @@ export default async function ProjectPage({ params }: PageProps) {
           <span className="text-brand-primary font-mono text-xs tracking-wider uppercase">
             {project.category}
           </span>
-          <Badge variant={statusColorMap[project.status]}>
-            {project.status.replace("-", " ")}
+          <Badge variant={statusBadgeVariant[project.status]}>
+            {formatStatus(project.status)}
           </Badge>
         </div>
 
@@ -320,7 +314,7 @@ export default async function ProjectPage({ params }: PageProps) {
                     Development Status
                   </span>
                   <span className="text-foreground text-sm font-semibold tracking-wider uppercase">
-                    {project.status.replace("-", " ")}
+                    {formatStatus(project.status)}
                   </span>
                 </div>
 

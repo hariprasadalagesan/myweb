@@ -1,9 +1,4 @@
-import { ExperienceItem } from "@/types"
-
-export interface JourneyItem {
-  year: string
-  title: string
-}
+import { ExperienceItem, JourneyTimelineItem } from "@/types"
 
 export const experienceData: ExperienceItem[] = [
   {
@@ -35,7 +30,7 @@ export const experienceData: ExperienceItem[] = [
   },
 ]
 
-export const journeyTimelineData: JourneyItem[] = [
+export const journeyTimelineData: JourneyTimelineItem[] = [
   {
     year: "2021",
     title: "Started Computer Science Engineering",
