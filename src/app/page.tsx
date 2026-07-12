@@ -10,7 +10,7 @@ import { ProjectCard } from "@/components/ui/project-card"
 import { SkillCard } from "@/components/ui/skill-card"
 import { Timeline } from "@/components/ui/timeline"
 
-import { Hero } from "@/components/layout/hero"
+import { HeroSection } from "@/components/layout/hero"
 
 // Content imports
 import { aboutContent } from "@/content/about"
@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <Container clean>
       {/* 1. HERO SECTION */}
-      <Hero />
+      <HeroSection />
 
       <Divider variant="gradient" />
 

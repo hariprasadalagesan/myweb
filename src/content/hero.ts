@@ -1,17 +1,16 @@
 import { HeroContent } from "@/types"
 
 export const heroContent: HeroContent = {
-  badge: "Available for new opportunities",
-  title: "Building High-Performance",
-  titleGradientText: "Real-World Software Solutions",
+  badge: "Software Engineer • Backend Developer • IoT Enthusiast",
+  title: "Building practical software",
+  titleGradientText: "for real-world problems.",
   subtitle:
-    "I am Hariprasad, a Lead Software Engineer specializing in modern architectures, robust frontend design, and scalable developer tools.",
+    "I design and build scalable backend systems, IoT solutions, and data-driven applications that solve real-world challenges.",
   actions: [
     {
       label: "View Projects",
       href: "#projects",
       variant: "default",
-      icon: "ArrowRight",
     },
     {
       label: "Download Resume",
