@@ -337,6 +337,22 @@ export default function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "HariWorks",
+            url: "https://hariworks.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://hariworks.com/?q={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "Person",
             name: "Hariprasad T A",
             jobTitle: "Python Backend Developer",

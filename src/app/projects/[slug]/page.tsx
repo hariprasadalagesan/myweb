@@ -17,9 +17,26 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ProjectCard } from "@/components/ui/project-card"
 import { projectsData } from "@/content/projects"
 import { cn } from "@/lib/utils"
+import { Metadata } from "next"
+import { constructMetadata } from "@/utils/metadata"
 
 export interface PageProps {
   params: Promise<{ slug: string }>
+}
+
+// Generate dynamic metadata
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const project = projectsData.find((p) => p.slug === slug)
+  if (!project) return {}
+
+  return constructMetadata({
+    title: `${project.title} Case Study`,
+    description: project.description,
+    urlPath: `/projects/${project.slug}`,
+  })
 }
 
 // Generate static params for static site generation (SSG)
@@ -396,6 +413,29 @@ export default async function ProjectPage({ params }: PageProps) {
               "@type": "Person",
               name: "Hariprasad T A",
             },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://hariworks.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: project.title,
+                item: `https://hariworks.com/projects/${project.slug}`,
+              },
+            ],
           }),
         }}
       />

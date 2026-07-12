@@ -26,6 +26,18 @@ export function constructMetadata({
     alternates: {
       canonical: fullUrl,
     },
+    keywords: [
+      "Python Developer",
+      "Backend Developer",
+      "FastAPI Developer",
+      "Maestro Technology Services Intern",
+      "IoT Developer",
+      "ESP32 MQTT",
+      "REST APIs",
+      "Hariprasad T A",
+    ],
+    authors: [{ name: "Hariprasad T A", url: "https://hariworks.com" }],
+    creator: "Hariprasad T A",
     openGraph: {
       title: fullTitle,
       description,
@@ -46,7 +58,7 @@ export function constructMetadata({
       title: fullTitle,
       description,
       images: [ogImage],
-      creator: "@hariprasad", // Replace or configure as necessary
+      creator: "@hariprasad",
     },
     robots: {
       index: !noIndex,
