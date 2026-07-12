@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { Navbar } from "@/components/layout/navbar"
 import { constructMetadata } from "@/utils/metadata"
+import { siteMetadata } from "@/content/site"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -15,9 +16,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata = constructMetadata({
-  title: "Hariprasad | Software Engineer & Architect",
-  description:
-    "HariWorks is the personal engineering portfolio of Hariprasad, featuring projects, engineering principles, and core technical skills.",
+  title: `${siteMetadata.name} — ${siteMetadata.title}`,
+  description: siteMetadata.description,
 })
 
 export default function RootLayout({

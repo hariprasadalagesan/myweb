@@ -9,15 +9,11 @@ import { useActiveSection } from "@/hooks/use-active-section"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { ThemeToggle } from "@/components/layout/theme-toggle"
-import { NavItem } from "@/types"
 import { cn } from "@/lib/utils"
 
-const navItems: NavItem[] = [
-  { label: "Home", href: "#" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-]
+import { navigationConfig } from "@/content/navigation"
+
+const navItems = navigationConfig.header
 
 export function Navbar() {
   const scrolled = useScroll(10)
